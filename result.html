@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Comfort Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header class="top-header">
+
+    <div class="brand">
+
+        <div class="brand-icon">
+            🏠
+        </div>
+
+        <div>
+            <h1>Smart Room Comfort Level</h1>
+            <p>Using Fuzzy Logic</p>
+        </div>
+
+    </div>
+
+    <nav>
+
+        <a href="/">Home</a>
+        <a href="/input">Input</a>
+        <a href="/result" class="active">Results</a>
+        <a href="/about">About</a>
+
+    </nav>
+
+</header>
+
+
+<main class="dashboard">
+
+
+    <div class="result-top">
+
+
+        <div class="welcome-result">
+
+            <span>
+                🧠 Comfort Analysis
+            </span>
+
+            <h2>
+                Welcome, {{ result.name }} !
+            </h2>
+
+            <p>
+                Your room conditions have been
+                analysed using fuzzy logic.
+            </p>
+
+        </div>
+
+
+        <div class="user-details-card">
+
+            <h2>👤 User Details</h2>
+
+
+            <div class="user-detail-row">
+
+                <span>Name</span>
+
+                <strong>
+                    {{ result.name }}
+                </strong>
+
+            </div>
+
+
+            <div class="user-detail-row">
+
+                <span>User Type</span>
+
+                <strong>
+                    {{ result.user_type }}
+                </strong>
+
+            </div>
+
+
+            <div class="user-detail-row">
+
+                <span>Location</span>
+
+                <strong>
+                    {{ result.location }}
+                </strong>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="result-grid">
+
+
+        <div class="analysis-card">
+
+            <span class="card-label">
+                📊 Analysis
+            </span>
+
+            <h2>Your Room Analysis</h2>
+
+            <p>
+                The following values were entered
+                for the current room analysis.
+            </p>
+
+
+            <div class="analysis-grid">
+
+
+                <div class="analysis-item">
+
+                    <span>🌡️</span>
+
+                    <small>
+                        Temperature
+                    </small>
+
+                    <strong>
+                        {{ result.temperature }} °C
+                    </strong>
+
+                </div>
+
+
+                <div class="analysis-item">
+
+                    <span>💧</span>
+
+                    <small>
+                        Humidity
+                    </small>
+
+                    <strong>
+                        {{ result.humidity }} %
+                    </strong>
+
+                </div>
+
+
+                <div class="analysis-item">
+
+                    <span>📊</span>
+
+                    <small>
+                        Comfort Score
+                    </small>
+
+                    <strong>
+                        {{ result.score }}/100
+                    </strong>
+
+                </div>
+
+
+                <div class="analysis-item">
+
+                    <span>😊</span>
+
+                    <small>
+                        Comfort Level
+                    </small>
+
+                    <strong>
+                        {{ result.comfort }}
+                    </strong>
+
+                </div>
+
+
+                <div class="analysis-item">
+
+                    <span>🌀</span>
+
+                    <small>
+                        Fan Speed
+                    </small>
+
+                    <strong>
+                        {{ result.fan }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="comfort-result-card">
+
+            <span class="card-label">
+                ✨ Final Result
+            </span>
+
+            <h2>Comfort Result</h2>
+
+
+            <div class="score-circle">
+
+                <strong>
+                    {{ result.score }}
+                </strong>
+
+                <span>/100</span>
+
+                <small>
+                    Comfort Score
+                </small>
+
+            </div>
+
+
+            <div class="comfort-level">
+                {{ result.comfort }}
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="fuzzy-card">
+
+        <span class="card-label">
+            🧠 Fuzzy Logic Analysis
+        </span>
+
+        <h2>How the Result Was Calculated</h2>
+
+
+        <div class="fuzzy-grid">
+
+
+            <div class="fuzzy-item">
+
+                <div class="number">1</div>
+
+                <div>
+
+                    <h3>Fuzzification</h3>
+
+                    <p>
+                        Temperature and humidity
+                        are converted into fuzzy values.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="fuzzy-item">
+
+                <div class="number">2</div>
+
+                <div>
+
+                    <h3>Inference</h3>
+
+                    <p>
+                        Fuzzy rules are applied to
+                        determine the comfort condition.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="fuzzy-item">
+
+                <div class="number">3</div>
+
+                <div>
+
+                    <h3>Defuzzification</h3>
+
+                    <p>
+                        The fuzzy output is converted
+                        into a numerical score.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="recommendation">
+
+        <span class="recommendation-icon">
+            💡
+        </span>
+
+        <div>
+
+            <h2>Recommendation</h2>
+
+            <p>
+                Comfort Level:
+                <strong>{{ result.comfort }}</strong>
+            </p>
+
+            <p>
+                Recommended Fan Speed:
+                <strong>{{ result.fan }}</strong>
+            </p>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="result-buttons">
+
+        <a href="/input" class="result-button">
+            🔄 Check Again
+        </a>
+
+        <a href="/" class="result-button secondary">
+            🏠 Home
+        </a>
+
+        <a href="/about" class="result-button secondary">
+            📘 About
+        </a>
+
+    </div>
+
+
+</main>
+
+
+<footer class="footer">
+
+    <strong>🏠 Smart Room Comfort Level</strong>
+
+    <span>Using Fuzzy Logic</span>
+
+    <span>© 2026</span>
+
+</footer>
+
+</body>
+</html>

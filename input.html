@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Room Conditions</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header class="top-header">
+
+    <div class="brand">
+
+        <div class="brand-icon">🏠</div>
+
+        <div>
+            <h1>Smart Room Comfort Level</h1>
+            <p>Using Fuzzy Logic</p>
+        </div>
+
+    </div>
+
+    <nav>
+
+        <a href="/">Home</a>
+        <a href="/input" class="active">Input</a>
+        <a href="/about">About</a>
+
+    </nav>
+
+</header>
+
+
+<main class="form-page">
+
+    <div class="form-card">
+
+        <div class="form-icon">
+            🌡️
+        </div>
+
+        <span class="section-title">
+            STEP 2
+        </span>
+
+        <h2>Room Conditions</h2>
+
+        <div class="user-welcome">
+
+            👋 Welcome,
+            <strong>{{ name }}</strong>
+
+        </div>
+
+        <p class="form-text">
+            Enter the current room conditions.
+        </p>
+
+
+        <form method="POST"
+              action="/calculate">
+
+            <label>
+                🌡️ Temperature (°C)
+            </label>
+
+            <input
+                type="number"
+                id="temperature"
+                name="temperature"
+                min="0"
+                max="50"
+                step="0.1"
+                placeholder="Example: 25"
+                required
+            >
+
+            <input
+                type="range"
+                id="temperatureSlider"
+                min="0"
+                max="50"
+                value="25"
+                step="0.1"
+                class="range"
+            >
+
+
+            <label>
+                💧 Humidity (%)
+            </label>
+
+            <input
+                type="number"
+                id="humidity"
+                name="humidity"
+                min="0"
+                max="100"
+                step="0.1"
+                placeholder="Example: 50"
+                required
+            >
+
+            <input
+                type="range"
+                id="humiditySlider"
+                min="0"
+                max="100"
+                value="50"
+                step="0.1"
+                class="range"
+            >
+
+
+            <button type="submit"
+                    class="blue-button">
+
+                Check Comfort Level →
+
+            </button>
+
+        </form>
+
+
+        <a href="/user" class="back-link">
+            ← Change User Details
+        </a>
+
+    </div>
+
+</main>
+
+
+<script>
+
+const temperature =
+document.getElementById("temperature");
+
+const temperatureSlider =
+document.getElementById("temperatureSlider");
+
+temperatureSlider.addEventListener("input", function () {
+    temperature.value = this.value;
+});
+
+temperature.addEventListener("input", function () {
+    temperatureSlider.value = this.value;
+});
+
+
+const humidity =
+document.getElementById("humidity");
+
+const humiditySlider =
+document.getElementById("humiditySlider");
+
+humiditySlider.addEventListener("input", function () {
+    humidity.value = this.value;
+});
+
+humidity.addEventListener("input", function () {
+    humiditySlider.value = this.value;
+});
+
+</script>
+
+</body>
+</html>

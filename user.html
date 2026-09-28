@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>User Details</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header class="top-header">
+
+    <div class="brand">
+
+        <div class="brand-icon">🏠</div>
+
+        <div>
+            <h1>Smart Room Comfort Level</h1>
+            <p>Using Fuzzy Logic</p>
+        </div>
+
+    </div>
+
+    <nav>
+
+        <a href="/">Home</a>
+        <a href="/user" class="active">Input</a>
+        <a href="/about">About</a>
+
+    </nav>
+
+</header>
+
+
+<main class="form-page">
+
+    <div class="form-card">
+
+        <div class="form-icon">
+            👤
+        </div>
+
+        <span class="section-title">
+            STEP 1
+        </span>
+
+        <h2>User Details</h2>
+
+        <p class="form-text">
+            Enter your details to continue.
+        </p>
+
+
+        <form method="POST"
+              action="/user">
+
+            <label>
+                👤 Your Name
+            </label>
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Enter your name"
+                required
+            >
+
+
+            <label>
+                🏠 User Type
+            </label>
+
+            <select name="user_type" required>
+
+                <option value="">
+                    Select user type
+                </option>
+
+                <option value="Home User">
+                    Home User
+                </option>
+
+                <option value="Student">
+                    Student
+                </option>
+
+                <option value="Other">
+                    Other
+                </option>
+
+            </select>
+
+
+            <label>
+                📍 Location
+            </label>
+
+            <input
+                type="text"
+                name="location"
+                placeholder="Enter your location"
+            >
+
+
+            <button type="submit"
+                    class="blue-button">
+
+                Continue →
+
+            </button>
+
+        </form>
+
+
+        <a href="/" class="back-link">
+            ← Back to Home
+        </a>
+
+    </div>
+
+</main>
+
+</body>
+</html>
